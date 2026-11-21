@@ -22,6 +22,7 @@ dropped, reworded or sent upstream as a PR on its own.
 | `Add fork notes and upstream sync script`        | This file, `CLAUDE.md` and `scripts/sync-upstream.sh`.                                                                                                                      |
 | `Add light colour theme`                         | All watch-side colours go through `src/c/theme.h`. `ARGUS_LIGHT_THEME` (default `1`) selects black-on-white; set it to `0` (in `theme.h` or `-DARGUS_LIGHT_THEME=0`) for the original dark theme. |
 | `Bump @rebble/clay to ^1.1.0`                    | Newer Clay.                                                                                                                                                                 |
+| `Add launcher menu icon`                         | 25×25 black-on-white `resources/images/menu_icon.png`, declared with `menuIcon: true` in `package.json`.                                                                    |
 
 Keep this table up to date when adding or dropping a fork commit.
 
