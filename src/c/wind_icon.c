@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "wind_icon.h"
 
 static const uint32_t s_wind_icon_data[WIND_ICON_WIDTH * WIND_ICON_HEIGHT] = {
@@ -18,7 +19,7 @@ static const uint32_t s_wind_icon_data[WIND_ICON_WIDTH * WIND_ICON_HEIGHT] = {
 };
 
 void wind_icon_draw(GContext *ctx, int x, int y) {
-  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_fill_color(ctx, THEME_FG);
   for (int row = 0; row < WIND_ICON_HEIGHT; row++) {
     for (int col = 0; col < WIND_ICON_WIDTH; col++) {
       if (s_wind_icon_data[row * WIND_ICON_WIDTH + col]) {

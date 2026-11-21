@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "quiet_mode_icon.h"
 
 static const uint32_t s_quiet_mode_icon_data[QUIET_MODE_ICON_WIDTH * QUIET_MODE_ICON_HEIGHT] = {
@@ -26,9 +27,9 @@ void quiet_mode_icon_draw(GContext *ctx, int x, int y) {
       }
 
       if (pixel != 0xffffffff) {
-        graphics_context_set_fill_color(ctx, GColorRed);
+        graphics_context_set_fill_color(ctx, THEME_ALERT);
       } else {
-        graphics_context_set_fill_color(ctx, GColorWhite);
+        graphics_context_set_fill_color(ctx, THEME_FG);
       }
 
       graphics_fill_rect(ctx, GRect(x + col, y + row, 1, 1), 0, GCornerNone);

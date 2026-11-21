@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "heart_icon.h"
 
 static const uint32_t s_heart_icon_data[HEART_ICON_WIDTH * HEART_ICON_HEIGHT] = {
@@ -18,7 +19,7 @@ static const uint32_t s_heart_icon_data[HEART_ICON_WIDTH * HEART_ICON_HEIGHT] = 
 };
 
 void heart_icon_draw(GContext *ctx, int x, int y) {
-  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_fill_color(ctx, THEME_FG);
   for (int row = 0; row < HEART_ICON_HEIGHT; row++) {
     for (int col = 0; col < HEART_ICON_WIDTH; col++) {
       if (s_heart_icon_data[row * HEART_ICON_WIDTH + col]) {

@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "temp_icon.h"
 
 static const uint32_t s_temp_icon_data[TEMP_ICON_WIDTH * TEMP_ICON_HEIGHT] = {
@@ -18,7 +19,7 @@ static const uint32_t s_temp_icon_data[TEMP_ICON_WIDTH * TEMP_ICON_HEIGHT] = {
 };
 
 void temp_icon_draw(GContext *ctx, int x, int y) {
-  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_fill_color(ctx, THEME_FG);
   for (int row = 0; row < TEMP_ICON_HEIGHT; row++) {
     for (int col = 0; col < TEMP_ICON_WIDTH; col++) {
       if (s_temp_icon_data[row * TEMP_ICON_WIDTH + col]) {

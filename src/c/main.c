@@ -1,3 +1,4 @@
+#include "theme.h"
 #include <pebble.h>
 
 #include "argus_time.h"
@@ -644,7 +645,7 @@ static void init(void) {
   weather_set_updated_handler(prv_weather_updated);
 
   s_main_window = window_create();
-  window_set_background_color(s_main_window, GColorBlack);
+  window_set_background_color(s_main_window, THEME_BG);
   window_set_window_handlers(s_main_window, (WindowHandlers){
       .load = prv_window_load,
       .unload = prv_window_unload,

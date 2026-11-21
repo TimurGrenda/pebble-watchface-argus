@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "time_display.h"
 
 #include "formatting.h"
@@ -125,7 +126,7 @@ static void prv_draw_char(GContext *ctx, TimeDisplay *display, char ch, int x, i
   char text[2] = {ch, '\0'};
   GFont font = prv_font_for_char(ch, settings_get()->clock_font);
   int width = prv_char_width(display, ch);
-  graphics_context_set_text_color(ctx, GColorWhite);
+  graphics_context_set_text_color(ctx, THEME_FG);
   graphics_draw_text(ctx, text, font, GRect(x, y, width + 2, display->text_height),
                      GTextOverflowModeTrailingEllipsis, GTextAlignmentLeft, NULL);
 }

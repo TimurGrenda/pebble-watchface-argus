@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "header.h"
 
 #include "argus_time.h"
@@ -248,7 +249,7 @@ static GSize prv_text_size(const char *text) {
 
 static void prv_draw_text_font(GContext *ctx, const char *text, GFont font, int x, GRect bounds) {
   GSize size = prv_text_size_font(text, font);
-  graphics_context_set_text_color(ctx, GColorWhite);
+  graphics_context_set_text_color(ctx, THEME_FG);
   graphics_draw_text(ctx, text, font, GRect(x, bounds.origin.y, size.w + 2, bounds.size.h),
                      GTextOverflowModeTrailingEllipsis, GTextAlignmentLeft, NULL);
 }
@@ -456,7 +457,7 @@ static void prv_battery_update_proc(Layer *layer, GContext *ctx) {
   Header *header = s_header;
   GRect bounds = layer_get_bounds(layer);
 
-  graphics_context_set_stroke_color(ctx, GColorWhite);
+  graphics_context_set_stroke_color(ctx, THEME_FG);
   graphics_draw_round_rect(ctx, GRect(0, 2, bounds.size.w - 3, bounds.size.h - 4), 2);
   graphics_draw_line(ctx, GPoint(bounds.size.w - 2, 5), GPoint(bounds.size.w - 2, bounds.size.h - 5));
 
@@ -465,11 +466,11 @@ static void prv_battery_update_proc(Layer *layer, GContext *ctx) {
     fill_w = 0;
   }
 
-  GColor fill = GColorGreen;
+  GColor fill = THEME_BATT_OK;
   if (header->battery_percent <= 20) {
-    fill = GColorRed;
+    fill = THEME_ALERT;
   } else if (header->battery_percent <= 40) {
-    fill = GColorChromeYellow;
+    fill = THEME_BATT_WARN;
   }
 
   graphics_context_set_fill_color(ctx, fill);

@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "steps_icon.h"
 
 static const uint32_t s_steps_icon_data[STEPS_ICON_WIDTH * STEPS_ICON_HEIGHT] = {
@@ -18,7 +19,7 @@ static const uint32_t s_steps_icon_data[STEPS_ICON_WIDTH * STEPS_ICON_HEIGHT] = 
 };
 
 void steps_icon_draw(GContext *ctx, int x, int y) {
-  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_fill_color(ctx, THEME_FG);
   for (int row = 0; row < STEPS_ICON_HEIGHT; row++) {
     for (int col = 0; col < STEPS_ICON_WIDTH; col++) {
       if (s_steps_icon_data[row * STEPS_ICON_WIDTH + col]) {

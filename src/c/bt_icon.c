@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "bt_icon.h"
 
 static const uint32_t s_bt_connected_data[BT_ICON_WIDTH * BT_ICON_HEIGHT] = {
@@ -43,9 +44,9 @@ static void prv_draw_icon(GContext *ctx, int x, int y, const uint32_t *data, boo
       }
 
       if (use_red && pixel != 0xffffffff) {
-        graphics_context_set_fill_color(ctx, GColorRed);
+        graphics_context_set_fill_color(ctx, THEME_ALERT);
       } else {
-        graphics_context_set_fill_color(ctx, GColorWhite);
+        graphics_context_set_fill_color(ctx, THEME_FG);
       }
 
       graphics_fill_rect(ctx, GRect(x + col, y + row, 1, 1), 0, GCornerNone);

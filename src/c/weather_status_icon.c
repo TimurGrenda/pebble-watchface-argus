@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "weather_status_icon.h"
 
 /* Shared cloud silhouette + shading from custom icons weather/v2
@@ -56,7 +57,7 @@ static GColor prv_fill_color(WeatherStatusIconKind kind, bool light) {
       return light ? GColorFromHEX(0x6F83D9) : GColorFromHEX(0x2049FF);
     case WEATHER_STATUS_ICON_NONE:
     default:
-      return GColorWhite;
+      return THEME_FG;
   }
 }
 
@@ -73,11 +74,11 @@ void weather_status_icon_draw(GContext *ctx, int x, int y, WeatherStatusIconKind
       }
 
       if (pixel == CLOUD_PX_WHITE) {
-        graphics_context_set_fill_color(ctx, GColorWhite);
+        graphics_context_set_fill_color(ctx, THEME_FG);
       } else if (pixel == CLOUD_PX_LIGHT) {
-        graphics_context_set_fill_color(ctx, prv_fill_color(kind, true));
+        graphics_context_set_fill_color(ctx, prv_fill_color(kind, THEME_CLOUD_SHADE(true)));
       } else {
-        graphics_context_set_fill_color(ctx, prv_fill_color(kind, false));
+        graphics_context_set_fill_color(ctx, prv_fill_color(kind, THEME_CLOUD_SHADE(false)));
       }
 
       graphics_fill_rect(ctx, GRect(x + col, y + row, 1, 1), 0, GCornerNone);

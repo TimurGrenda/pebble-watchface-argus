@@ -1,3 +1,4 @@
+#include "theme.h"
 #include "calendar.h"
 
 #include "argus_time.h"
@@ -277,7 +278,7 @@ static void prv_calendar_update_proc(Layer *layer, GContext *ctx) {
     GRect month_cell =
         GRect(CALENDAR_SIDE_PAD_LEFT, 0, CALENDAR_WEEK_LABEL_WIDTH - CALENDAR_SIDE_LABEL_INSET, CALENDAR_HEADER_HEIGHT);
     GRect month_text_rect = prv_row_text_rect(month_cell, CALENDAR_HEADER_LINE_HEIGHT);
-    prv_draw_text(ctx, calendar->month_label, month_font, month_text_rect, GTextAlignmentRight, GColorWhite);
+    prv_draw_text(ctx, calendar->month_label, month_font, month_text_rect, GTextAlignmentRight, THEME_FG);
   }
 
   for (int col = 0; col < 7; col++) {
@@ -285,7 +286,7 @@ static void prv_calendar_update_proc(Layer *layer, GContext *ctx) {
     GRect header_cell = GRect(prv_col_x(layout, col), 0, col_w, CALENDAR_HEADER_HEIGHT);
     GRect text_rect = prv_row_text_rect(header_cell, CALENDAR_HEADER_LINE_HEIGHT);
     prv_draw_text(ctx, labels[col], header_font, text_rect, GTextAlignmentCenter,
-                  prv_is_weekend_column(col, settings->week_start) ? CALENDAR_WEEKEND_COLOR : GColorWhite);
+                  prv_is_weekend_column(col, settings->week_start) ? CALENDAR_WEEKEND_COLOR : THEME_FG);
   }
 
   for (int row = 0; row < 2; row++) {
@@ -303,7 +304,7 @@ static void prv_calendar_update_proc(Layer *layer, GContext *ctx) {
     GRect cell = prv_day_cell_rect(i, layout);
     GRect text_rect = prv_row_text_rect(cell, CALENDAR_DAY_LINE_HEIGHT);
     prv_draw_text(ctx, calendar->day_labels[i], day_font, text_rect, GTextAlignmentCenter,
-                  prv_is_weekend(calendar->cells[i].tm_wday) ? CALENDAR_WEEKEND_COLOR : GColorWhite);
+                  prv_is_weekend(calendar->cells[i].tm_wday) ? CALENDAR_WEEKEND_COLOR : THEME_FG);
   }
 }
 
@@ -367,12 +368,12 @@ static void prv_today_layer_update_proc(Layer *layer, GContext *ctx) {
   GRect text_rect = prv_row_text_rect(cell, CALENDAR_DAY_LINE_HEIGHT);
   GRect pill = prv_day_pill_rect(text_rect, today_font, cell.size.w);
 
-  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_fill_color(ctx, THEME_FG);
   graphics_fill_rect(ctx, pill, CALENDAR_TODAY_PILL_CORNER_RADIUS, GCornersAll);
   if (is_holiday) {
     prv_draw_holiday_frame(ctx, pill);
   }
-  prv_draw_text(ctx, calendar->day_labels[today_index], today_font, text_rect, GTextAlignmentCenter, GColorBlack);
+  prv_draw_text(ctx, calendar->day_labels[today_index], today_font, text_rect, GTextAlignmentCenter, THEME_BG);
 }
 
 Calendar *calendar_create(Layer *parent) {

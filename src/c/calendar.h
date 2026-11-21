@@ -1,5 +1,6 @@
 #pragma once
 
+#include "theme.h"
 #include <pebble.h>
 
 #define CALENDAR_SIDE_PAD_LEFT 2
@@ -23,10 +24,10 @@
 #define CALENDAR_BOTTOM_PAD 2
 #define CALENDAR_EVENT_DOT_RADIUS 2
 #define CALENDAR_EVENT_DOT_OFFSET_FROM_BOTTOM 4
-#define CALENDAR_HOLIDAY_FRAME_COLOR GColorVividCerulean
+#define CALENDAR_HOLIDAY_FRAME_COLOR THEME_ACCENT_BLUE
 #define CALENDAR_HOLIDAY_FRAME_WIDTH 1
-#define CALENDAR_WEEKEND_COLOR GColorSunsetOrange
-#define CALENDAR_WEEK_NUMBER_COLOR GColorLightGray
+#define CALENDAR_WEEKEND_COLOR THEME_WEEKEND
+#define CALENDAR_WEEK_NUMBER_COLOR THEME_MUTED
 #define CALENDAR_HEIGHT                                                                                              \
   (CALENDAR_HEADER_HEIGHT + CALENDAR_HEADER_ROW_GAP + CALENDAR_ROW_HEIGHT + CALENDAR_WEEK_ROW_GAP +                  \
    CALENDAR_ROW_HEIGHT + CALENDAR_BOTTOM_PAD)
